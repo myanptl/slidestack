@@ -3,7 +3,7 @@ import JSZip from "jszip";
 import { generateCarousel } from "./lib/claude";
 import { DEMO_CAROUSEL } from "./lib/demo";
 import { renderCarousel } from "./lib/render";
-import { THEMES } from "./lib/themes";
+import { THEME } from "./lib/themes";
 import type { Carousel, ModelId } from "./lib/types";
 
 const KEY_STORAGE = "slidestack.apiKey";
@@ -26,7 +26,6 @@ export default function App() {
   const [audience, setAudience] = useState(AUDIENCES[0]);
   const [tone, setTone] = useState(TONES[0]);
   const [slideCount, setSlideCount] = useState(6);
-  const [themeId, setThemeId] = useState(THEMES[0].id);
   const [handle, setHandle] = useState("");
 
   const [carousel, setCarousel] = useState<Carousel | null>(null);
@@ -39,17 +38,15 @@ export default function App() {
     if (!rememberKey) localStorage.removeItem(KEY_STORAGE);
   }, [rememberKey, apiKey]);
 
-  const theme = THEMES.find((t) => t.id === themeId) ?? THEMES[0];
-
   const rerender = useCallback(
     async (deck: Carousel) => {
-      const urls = await renderCarousel(deck, theme, handle.trim());
+      const urls = await renderCarousel(deck, THEME, handle.trim());
       setImages(urls);
     },
-    [theme, handle],
+    [handle],
   );
 
-  // re-paint when theme/handle change on an existing deck
+  // re-paint when handle changes on an existing deck
   useEffect(() => {
     if (carousel) void rerender(carousel);
   }, [carousel, rerender]);
@@ -184,24 +181,6 @@ export default function App() {
                 maxLength={32}
               />
             </label>
-          </div>
-
-          <div className="field">
-            <span>Theme</span>
-            <div className="themes">
-              {THEMES.map((t) => (
-                <button
-                  key={t.id}
-                  type="button"
-                  className={`theme-chip ${t.id === themeId ? "active" : ""}`}
-                  style={{ background: t.bg, color: t.ink, borderColor: t.id === themeId ? t.accent : "transparent" }}
-                  onClick={() => setThemeId(t.id)}
-                >
-                  <i style={{ background: t.accent }} />
-                  {t.name}
-                </button>
-              ))}
-            </div>
           </div>
 
           <div className="field">

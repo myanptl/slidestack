@@ -119,25 +119,6 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 }
 .remember input { width: auto; }
 
-.themes { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-
-.theme-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font: inherit;
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.5rem 0.8rem;
-  border: 3px solid transparent;
-  border-radius: var(--radius);
-  cursor: pointer;
-  box-shadow: 3px 3px 0 rgba(20, 18, 16, 0.55);
-  transition: transform 120ms ease;
-}
-.theme-chip:hover { transform: translateY(-2px); }
-.theme-chip i { width: 14px; height: 14px; display: inline-block; border-radius: 2px; }
-
 .models { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
 
 .model-chip {
