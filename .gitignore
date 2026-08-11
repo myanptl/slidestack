@@ -7,3 +7,6 @@ dist
 
 # ruflo/claude-flow local artifacts
 .claude-flow/
+
+# graphify analysis output (generated, not source)
+graphify-out/
