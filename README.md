@@ -1,5 +1,7 @@
 # SlideStack 🗂️
 
+[![SlideStack](docs/screenshot.jpeg)](https://slidestack-beta.vercel.app)
+
 Turn any topic into a save-worthy Instagram carousel. Claude writes the deck, your browser draws it on canvas, and you download ready-to-post 1080×1350 PNGs.
 
 **Why carousels?** In 2026 Instagram distributes carousels to non-followers at Reels-level rates, and they get saved ~9× more than Reels. Educational carousels are the highest-leverage format for creators — SlideStack makes them in one click.
